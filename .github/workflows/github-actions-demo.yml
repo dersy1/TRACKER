@@ -23,12 +23,16 @@ jobs:
         with:
           node-version: 18
           cache: npm
+          cache-dependency-path: TRACKER/package-lock.json  
 
       - name: Install dependencies
         run: npm install
+        working-directory: TRACKER 
 
       - name: Run tests
         run: npm test
+        working-directory: TRACKER  
 
       - name: Build project
         run: npm run build
+        working-directory: TRACKER  
