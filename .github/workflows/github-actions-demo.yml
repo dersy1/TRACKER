@@ -23,16 +23,16 @@ jobs:
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: frontend/package-lock.json  # <- Aquí especificas la ruta correcta
+          cache-dependency-path: TRACKER/front-end/package-lock.json  # Ruta correcta del lock file
 
       - name: Install dependencies
         run: npm install
-        working-directory: frontend  # <- Aquí ejecutas los comandos dentro de la carpeta
+        working-directory: TRACKER/front-end  # Ejecuta npm install dentro de front-end
 
       - name: Run tests
         run: npm test
-        working-directory: frontend  # <- Lo mismo para las pruebas
+        working-directory: TRACKER/front-end  # Ejecuta las pruebas dentro de front-end
 
       - name: Build project
         run: npm run build
-        working-directory: frontend  # <- Y para el build
+        working-directory: TRACKER/front-end  # Ejecuta el build dentro de front-end
