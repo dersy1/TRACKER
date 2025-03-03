@@ -18,21 +18,25 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Verify folder structure
+        run: ls -R
+        working-directory: front-end  # Verifica si front-end existe y contiene package-lock.json
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
           cache: npm
-          cache-dependency-path: TRACKER/front-end/package-lock.json  # Ruta correcta del lock file
+          cache-dependency-path: front-end/package-lock.json  # Ruta correcta en el entorno de Actions
 
       - name: Install dependencies
         run: npm install
-        working-directory: TRACKER/front-end  # Ejecuta npm install dentro de front-end
+        working-directory: front-end  # Asegura que los comandos se ejecuten en front-end
 
       - name: Run tests
         run: npm test
-        working-directory: TRACKER/front-end  # Ejecuta las pruebas dentro de front-end
+        working-directory: front-end
 
       - name: Build project
         run: npm run build
-        working-directory: TRACKER/front-end  # Ejecuta el build dentro de front-end
+        working-directory: front-end
